@@ -96,7 +96,7 @@ $(function() {
         var $feed = $('.feed');
 
     	beforeEach(function (done) {
-			loadFeed(0,done());
+			loadFeed(0,done);
 		});
 
         it(' loadFeed function is called and completes its work', function() {
