@@ -112,17 +112,21 @@ $(function() {
          */
 		var $feed = $('.feed');
 		var feedZeroInitialItem;
+		var feedOneInitialItem;
     	beforeEach(function (done) {
     		loadFeed(0,function() {
     			feedZeroInitialItem = $feed.find(".entry").text();
-    			loadFeed(1,done());
+    			loadFeed(1,function(){
+					feedOneInitialItem = $feed.find(".entry").text();
+					done();
+					});
     		});
 		});
 
         it(' new feed is loaded', function() {
         	expect(feedZeroInitialItem.length).not.toBe(0);
-        	expect(feedZeroInitialItem).not.toBe($feed.find(".entry").text());
-        	expect($feed.find(".entry").text().length).not.toBe(0);
+        	expect(feedOneInitialItem.length).not.toBe(0);
+        	expect(feedZeroInitialItem).not.toBe(feedOneInitialItem);
         });
     });
 }());
